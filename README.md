@@ -10,8 +10,8 @@
 只是简单记录下学习的过程，其中有的脚本是在网上搜索的，有的是自己写的，仅供后续查阅。
 
 #### :monkey: 目录
-- [pyqt5](pyqt5) 
-- [ADB command](ADB)
-
+- [Pyqt5](pyqt5) 
+- [ADB Command](adb)
+- [Selenium](selenium)
 
 

@@ -1,4 +1,4 @@
-#### :monkey: pyqt5总结
+#### :monkey: pyqt5
 ![](https://img.shields.io/badge/Python-3.8.5-green.svg) ![](https://img.shields.io/badge/pyqt5-5.15.2-green.svg)
 
 #### :monkey: 目录
