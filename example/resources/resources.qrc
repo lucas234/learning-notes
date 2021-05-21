@@ -1,0 +1,12 @@
+<!DOCTYPE RCC>
+   <RCC version="1.0">
+       <qresource>
+           <file alias='about.png'>assets/about.png</file>
+           <file alias='browser.png'>assets/browser.png</file>
+           <file alias='down.png'>assets/down.png</file>
+           <file alias='films_list.png'>assets/films_list.png</file>
+           <file alias='television.png'>assets/television.png</file>
+           <file alias='vlc.png'>assets/vlc.png</file>
+           <file alias='warning.png'>assets/warning.png</file>
+       </qresource>
+   </RCC>
