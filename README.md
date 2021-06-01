@@ -11,7 +11,8 @@
 
 #### :monkey: 目录
 - [Pyqt5](pyqt5) 
-- [ADB Command](adb)
+- [ADB 命令](adb)
 - [Selenium](selenium)
+- [SSO demo](https://github.com/lucas234/OauthDemo)
 
 
