@@ -1,5 +1,6 @@
 #### :monkey: 学习笔记
-![](https://img.shields.io/badge/Python-green.svg) ![](https://img.shields.io/badge/自动化测试-blue.svg) ![](https://img.shields.io/badge/版本控制-red.svg) 
+![](https://img.shields.io/badge/编程语言-purple.svg) ![](https://img.shields.io/badge/Python-green.svg) ![](https://img.shields.io/badge/自动化测试-blue.svg) ![](https://img.shields.io/badge/版本控制-red.svg)  ![](https://img.shields.io/badge/模块学习-cyan.svg)
+![](https://img.shields.io/badge/其他-orange.svg) 
 
 |Author|:sunglasses:lucas234:sunglasses:|
 |---|---|
