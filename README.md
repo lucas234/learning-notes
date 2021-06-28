@@ -11,11 +11,11 @@
 只是简单记录下学习的过程，其中有的脚本是在网上搜索的，有的是自己写的，仅供后续查阅。
 
 #### :monkey: 目录
-- [Python](Python) 
 - [ADB 命令](adb)
-- [自动化测试](自动化测试)
-- [SSO demo](https://github.com/lucas234/OauthDemo)
-- [Git](Git)
 - [front-study](https://github.com/lucas234/front-study)
+- [Git](Git)
+- [Python](Python) 
+- [SSO demo](https://github.com/lucas234/OauthDemo)
+- [自动化测试](自动化测试)
 
 
