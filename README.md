@@ -9,6 +9,7 @@
 - [Docker](Docker)
 - [front-study](https://github.com/lucas234/front-study)
 - [Git](Git)
+- [Jenkins](Jenkins)
 - [Linux](Linux)
 - [Python](Python) 
 - [SSO demo](https://github.com/lucas234/OauthDemo)
