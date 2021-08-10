@@ -1,5 +1,5 @@
-#### :monkey: Linux
-![](https://img.shields.io/badge/Linux-black.svg) 
+#### :snowman: Linux
+![](https://img.shields.io/badge/Linux-black.svg) ![](https://img.shields.io/badge/操作系统-black.svg) 
 
 ##### 1. 查找大文件
 ```shell
@@ -78,36 +78,37 @@ lsof -i tcp:4723
 
 ##### 10. 判断进程是否存在，不存在则启动
 ```shell
-    #第一种
-	#!/bin/sh
-	if [ ! -f "/Users/test/checkScripts/log.txt" ];then
-	echo "file is not exist."
-	else
-	rm -f /Users/lexisnexis/checkScripts/log.txt
-	echo "delete log.txt successfully."
-	fi
+#!/bin/sh
+#第一种
+if [ ! -f "/Users/test/checkScripts/log.txt" ];then
+echo "file is not exist."
+else
+rm -f /Users/lexisnexis/checkScripts/log.txt
+echo "delete log.txt successfully."
+fi
 
-	ps -fe|grep jenkins |grep -v grep
-	if [ $? -ne 0 ]
-	then
-	echo "start process....."
-	cd /Users/test/jenkinsAgent&&open slave-agent.jnlp
-	else
-	echo "runing....."
-	fi
+ps -fe|grep jenkins |grep -v grep
+if [ $? -ne 0 ]
+then
+echo "start process....."
+cd /Users/test/jenkinsAgent&&open slave-agent.jnlp
+else
+echo "runing....."
+fi
 ```
+
 ```shell
-   # 第二种，通过端口判断
-   # ps -fe | grep 'main.js -a 127.0.0.1 -p 4723' | grep -v grep
-	netstat -an|grep 4723
-	if [ $? -ne 0 ]
-	then
-	echo "start process....."
-	cd /usr/local/lib/node_modules/appium/build/lib && node main.js -a 127.0.0.1 -p 4723
-	else
-	echo "runing....."
-	fi
-	# pkill -f 'main.js -a 127.0.0.1 -p 4723'
+# 第二种，通过端口判断
+# ps -fe | grep 'main.js -a 127.0.0.1 -p 4723' | grep -v grep
+netstat -an|grep 4723
+if [ $? -ne 0 ]
+then
+echo "start process....."
+cd /usr/local/lib/node_modules/appium/build/lib && node main.js -a 127.0.0.1 -p 4723
+else
+echo "runing....."
+fi
+# pkill -f 'main.js -a 127.0.0.1 -p 4723'
 ```
     
 ##### 11. 批量删除文件（文件太多时）

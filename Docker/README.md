@@ -1,5 +1,6 @@
-#### :monkey: Docker
-![](https://img.shields.io/badge/Docker-cyan.svg) 
+#### :snowman: Docker
+![](https://img.shields.io/badge/Docker-cyan.svg) ![](https://img.shields.io/badge/虚拟容器-cyan.svg) 
+
 
 ##### 1.停止、删除多个容器
 - 停止多个容器`docker stop $(docker ps -a -q)`
@@ -12,7 +13,9 @@
 - 查看容器IP`docker exec -it 8bc945592f31 ip addr`
 
 ##### 3. --rm 参数
-`--rm` 参数是指当容器结束时，会清理掉该容器，不会显示在`docker ps -a` 列表中，例如：`docker run -it --rm prakhar1989/foodtrucks-web bash`
+`--rm` 参数是指当容器结束时，会清理掉该容器，不会显示在`docker ps -a` 列表中，
+
+例如：`docker run -it --rm prakhar1989/foodtrucks-web bash`
 
 ##### 4. 网络相关
 - 查看运行容器的网络信息`docker network inspect bridge`
@@ -145,10 +148,10 @@ docker container ls | grep wildfly | awk '{print $1}'
     ```
 
 ##### 17. 问题
-1.遇见这种错误时：`Error response from daemon: conflict: unable to delete 2da6c8b45647 (cannot be forced) - image has dependent child images`
+I.遇见这种错误时：`Error response from daemon: conflict: unable to delete 2da6c8b45647 (cannot be forced) - image has dependent child images`
 - 先查看依赖：`docker image inspect --format='{{.RepoTags}} {{.Id}} {{.Parent}}' $(docker image ls -q --filter since=XXX) `(XXX指镜像ID),然后删掉依赖后再删除即可
 - 可能是因为你创建的时候用了`cache`导致的，重新build的时候加上参数`--no-cache`(类似`docker build -t your docker name . --no-cache`)
 
-2.alpine apk update 时报错：`ERROR: http://dl-cdn.alpinelinux.org/alpine/v3.11/main: network error (check Internet connection and firewall)`
+II.alpine apk update 时报错：`ERROR: http://dl-cdn.alpinelinux.org/alpine/v3.11/main: network error (check Internet connection and firewall)`
 - 在build时加上`--network=host`即可：
 - 即`docker build -t your docker name . --no-cache --network=host`

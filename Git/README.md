@@ -1,28 +1,35 @@
-#### :monkey: Git
+#### :snowman: Git
 ![](https://img.shields.io/badge/Git-red.svg) ![](https://img.shields.io/badge/版本控制-red.svg)
 
 ##### 1.拉取、推送、切换分支
 ```
 # dev为远程仓库的分支名
 git fetch origin dev
+
 # 查看分支
 git branch
 git branch -a
+
 # 切换分支
 git checkout 分支名
+
 # 创建并切换到本地分支
 git checkout -b newBranch 
+
 # 拉取远程分支代码
 git pull origin dev 
+
 # 添加修改
 git add .
+
 # 提交修改
 git commit -m "修改信息"
+
 # 推送本地分支到远程仓库
 git push origin 本地分支
+
 # 重命名
 git branch -m oldName  newName
-
 ```
 ##### 2.删除远程分支
 - `git push origin --delete searchPublication`

@@ -1,7 +1,7 @@
-#### :monkey: pyqt5
+#### :snowman: pyqt5
 ![](https://img.shields.io/badge/Python-3.8.5-green.svg) ![](https://img.shields.io/badge/pyqt5-5.15.2-green.svg)
 
-#### :monkey: 目录
+#### :snowman: 目录
 - [QtDesigner用法](docs/designer.md) 
 - [resources文件用法](docs/resources.md)
 - [tableview中委托用法](example/delegate_example.py)
