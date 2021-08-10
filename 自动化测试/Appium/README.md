@@ -7,6 +7,7 @@
 - [元素定位总结](notes/Appium元素定位总结.md)
 - [Xcode命令](notes/Xcode命令.md)
 - [iOS真机命令](notes/iOS真机命令.md)
+- [Appium代码样例](https://github.com/lucas234/appium-sample)
 - [Appium问题总结](notes/Appium问题总结.md)
  
 
