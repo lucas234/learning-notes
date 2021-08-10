@@ -1,0 +1,76 @@
+version: '3'
+
+services:
+  adminer:
+    image: adminer
+    restart: always
+    networks:
+      - zentao
+    ports:
+      - 8080:8080
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile_db
+    restart: always
+    networks:
+      - zentao
+    environment:
+       MYSQL_ROOT_PASSWORD: mypassword
+       MYSQL_USER: zentao
+       MYSQL_PASSWORD: zentao123
+       MYSQL_DATABASE: zentao
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    healthcheck:
+      test: "/usr/bin/mysql --user=root --password=mypassword --execute \"SHOW DATABASES;\""
+      interval: 2m
+      timeout: 10s
+      retries: 3
+  initzt:
+    image: alpine:latest
+    volumes:
+      - zentao_data:/home
+    command:
+      - /bin/sh
+      - -c 
+      - |
+        cd /home
+        wget https://www.zentao.net/dl/zentao/12.5.3/ZenTaoPMS.12.5.3.zip
+        ls -l
+        unzip -q -o ZenTaoPMS.12.5.3.zip
+        rm ZenTaoPMS.12.5.3.zip
+  web:
+    build: .
+    networks:
+      - zentao
+    restart: always
+    ports:
+      - 2048:80
+      - 11444:11444
+      - 11443:11443
+    volumes:
+      - zentao_data:/var/www
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    depends_on:
+      - db
+      - initzt
+  
+volumes:
+  mariadb_data:
+  zentao_data:
+
+networks:
+  zentao:
+    driver: bridge

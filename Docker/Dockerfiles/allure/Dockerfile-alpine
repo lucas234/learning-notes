@@ -1,0 +1,48 @@
+FROM python:3.7-alpine
+MAINTAINER liulucas
+RUN apk update && apk add openjdk8 && apk add sudo
+ARG PACKAGE_NAME="allure-commandline-2.13.5.zip"
+ENV ALLURE_PATH=/allure-commandline
+COPY ${PACKAGE_NAME} .
+RUN mkdir -p "${ALLURE_PATH}" && \
+	unzip "${PACKAGE_NAME}" -d "${ALLURE_PATH}" && \
+	rm -Rf "${PACKAGE_NAME}"
+ENV PATH=$PATH:$ALLURE_PATH/allure-commandline-2.13.5/bin
+RUN sudo chmod +x /allure-commandline/allure-commandline-2.13.5/bin/*
+# CMD ["allure", "--version"]
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

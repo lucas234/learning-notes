@@ -1,0 +1,23 @@
+FROM ubuntu:18.04
+MAINTAINER liulucas
+RUN apt-get update && apt-get install -y sudo wget nano lsb-release gnupg perl apache2 gcc make
+
+RUN wget https://dev.mysql.com/get/mysql-apt-config_0.8.16-1_all.deb
+RUN sudo dpkg -i mysql-apt-config_0.8.16-1_all.deb
+RUN sudo apt-get install -y mysql-server
+
+RUN apt-get install -y libmysqld-dev libmysqlclient-dev
+
+# send email 
+#RUN apt-get install -y libnet-ssleay-perl libcrypt-ssleay-perl
+
+RUN wget http://ftp.mozilla.org/pub/mozilla.org/webtools/bugzilla-5.0.6.tar.gz
+RUN mkdir /var/www/html/bugzilla
+RUN tar xf bugzilla-5.0.6.tar.gz -C /var/www/html/bugzilla --strip-components=1
+RUN rm bugzilla-5.0.6.tar.gz
+RUN sudo chown -R www-data:www-data /var/www/html/bugzilla
+
+RUN cd /var/www/html/bugzilla && perl install-module.pl --all
+RUN cpan -i Class::XSAccessor::Array Class::XSAccessor
+RUN cd /var/www/html/bugzilla && perl checksetup.pl
+EXPOSE 80

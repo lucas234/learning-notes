@@ -1,0 +1,18 @@
+# docker-compose.yml
+version: '3.7'
+services:
+    mysql:
+      image: mysql:5.7
+      container_name: mysql
+      volumes:
+        - C:\diy\Dockerfiles\mysql\data:/var/lib/mysql
+      environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=bugs
+        - MYSQL_USER=lucas
+        - MYSQL_PASSWORD=123456
+      restart: always
+      ports:
+        - 3307:3306
+      
+      

@@ -1,0 +1,14 @@
+# docker-compose.yml
+version: '3.7'
+services:
+    zentao:
+      image: idoop/zentao:latest
+      container_name: zentao-server1
+      volumes:
+        - C:\diy\Dockerfiles\delete_something\zentao:/app/zentaopms
+        - C:\diy\Dockerfiles\delete_something\data:/var/lib/mysql
+      ports:
+        - "81:80"
+      environment:
+        - MYSQL_ROOT_PASSWORD=123456
+      restart: always

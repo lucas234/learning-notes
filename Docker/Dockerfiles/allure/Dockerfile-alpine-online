@@ -1,0 +1,55 @@
+# FROM python:3.7-alpine
+FROM openjdk:8-alpine
+MAINTAINER liulucas
+# Allure Versrion
+ARG ALLURE_REPORT_VERSION="2.13.5"
+
+# Allure Versrion
+ENV ALLURE_REPORT_HOME=/opt/allure
+
+# Export alure commandline
+ENV PATH $PATH:$ALLURE_REPORT_HOME/bin
+
+# Adding allure user, group, install dependencies and chage permissions
+RUN set -x && apk add --update --no-cache curl grep sed unzip bash py3-pip && \
+    curl --insecure -o /tmp/allure-${ALLURE_REPORT_VERSION}.zip -L https://dl.bintray.com/qameta/maven/io/qameta/allure/allure-commandline/${ALLURE_REPORT_VERSION}/allure-commandline-${ALLURE_REPORT_VERSION}.zip && \
+	unzip /tmp/allure-${ALLURE_REPORT_VERSION}.zip -d /opt && \
+	mv /opt/allure-${ALLURE_REPORT_VERSION} /opt/allure && \
+	rm /tmp/allure-${ALLURE_REPORT_VERSION}.zip
+CMD ["allure", "--version"]
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+# docker-compose.yml
+version: '3.7'
+services:
+    mantisbt:
+      image: xlrl/mantisbt:latest
+      container_name: mantis
+      volumes:
+        - C:\diy\Dockerfiles\mantis\test\config:/var/www/html/config
+        - C:\diy\Dockerfiles\mantis\test\custom:/var/www/html/custom
+      ports:
+        - "8989:80"
+      links:
+        - mysql
+      restart: always
+
+    mysql:
+      image: mariadb:latest
+      environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=bugtracker
+        - MYSQL_USER=mantisbt
+        - MYSQL_PASSWORD=mantisbt
+      volumes:
+         - C:\diy\Dockerfiles\mantis\dd:/var/lib/mysql
+      restart: always

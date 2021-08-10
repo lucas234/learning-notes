@@ -1,0 +1,15 @@
+version: "2.0"
+services:
+  myapp:
+    image: selenium-python:v1
+    volumes:
+      - ./:/code  # 这里把刚刚的代码映射到这个目录
+    # 定义启动容器执行的命令
+    command: python /code/docker_selenium_demo.py 
+    depends_on:
+      - chrome
+  chrome:
+    image: selenium/standalone-chrome:3.4.0
+    ports:
+      - "4444:4444"
+    shm_size: 2g

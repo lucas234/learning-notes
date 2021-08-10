@@ -1,0 +1,24 @@
+FROM perl:5.20
+MAINTAINER liulucas
+RUN apt-get update && apt-get install -y sudo apache2 vim wget libmysqld-dev libmysqlclient-dev gcc
+
+# send email 
+RUN apt-get install -y libnet-ssleay-perl libcrypt-ssleay-perl
+
+#RUN echo "mysql-server mysql-server/root_password password root" | debconf-set-selections 
+#RUN echo "mysql-server mysql-server/root_password_again password root" | debconf-set-selections 
+#RUN apt install -y -f mysql-server=5.7.33-1ubuntu18.04
+
+# install mysql
+RUN sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server
+#RUN sudo mysql -h localhost -P 3306 -u root -e"UPDATE mysql.user SET password = PASSWORD('123456') WHERE user = 'root'"
+
+RUN wget http://ftp.mozilla.org/pub/mozilla.org/webtools/bugzilla-5.0.6.tar.gz
+RUN mkdir /var/www/html/bugzilla
+RUN tar xf bugzilla-5.0.6.tar.gz -C /var/www/html/bugzilla --strip-components=1
+RUN rm bugzilla-5.0.6.tar.gz
+RUN sudo chown -R www-data:www-data /var/www/html/bugzilla
+
+RUN cd /var/www/html/bugzilla && perl install-module.pl --all
+RUN cpan -i Class::XSAccessor::Array Class::XSAccessor
+RUN cd /var/www/html/bugzilla && perl checksetup.pl
