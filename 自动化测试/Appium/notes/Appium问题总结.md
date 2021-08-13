@@ -14,4 +14,10 @@
 
    方法：可以用`uiAutomator`的方式定位，`new UiSelector().text("something") `即可
 
+4. iOS，Xcode的版本不同所对应的元素可能不同
+   
+5. 每次连接一个设备(如果该设备上有已经生成相应的文件`io.appium.uiautomator2.server`、`io.appium.uiautomator2.server.test`), 则需要将其卸载后,重启server,才可以运行脚本,不然会报错(类似于server-side的错误)
+   
+6. `Android`模拟器和`Windows docker`只能使用一个，`docker` 需要`Hyper-V` 而 `Android`模拟器不能有
+
  
