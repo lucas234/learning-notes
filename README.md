@@ -14,6 +14,8 @@
 - [Python](Python) 
 - [SSO demo](https://github.com/lucas234/OauthDemo)
 - [自动化测试](自动化测试)
+- [工具用法](工具用法)
+- [其他](其他)
 
 ## :snowman: 作者
 |Author|:cat: lucas234 :cat:|
