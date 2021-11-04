@@ -24,4 +24,5 @@
 23. 查看函数文档： control + J
 
 查看全部快捷键：
-![shortcuts](./images/pycharmshortcutformac.png)
+
+![shortcuts](https://github.com/lucas234/learning-notes/blob/6be1cb23e4d2e86b4aa1ee5df2696b7c0e163f68/%E5%B7%A5%E5%85%B7%E7%94%A8%E6%B3%95/images/pycharm%20shortcut%20for%20mac.png)
