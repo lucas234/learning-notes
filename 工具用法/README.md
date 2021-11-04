@@ -4,6 +4,7 @@
 #### :snowman: 目录
 - [App Crawler](notes/App_Crawler.md)
 - [Markdown自动生成Toc](notes/Markdown自动生成Toc.md)
+- [Pycharm 快捷键 for Mac](notes/Pycharm 快捷键 for Mac.md)
  
 
 
