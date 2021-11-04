@@ -22,3 +22,6 @@
 21. 删除光标所在的行：command + backspace
 22. 删除开始到光标所在的单词：option + backspace
 23. 查看函数文档： control + J
+
+查看全部快捷键：
+![shortcuts](./images/pycharmshortcutformac.png)
