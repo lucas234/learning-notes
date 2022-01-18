@@ -43,21 +43,26 @@ git branch -m oldName  newName
     git checkout .
     # 撤销单个文件的修改
     git checkout 文件名
-
-    git reset HEAD . (或者文件名)
-    # 查看状态
-	git status 
-    # 对上次的所有add的文件进行撤销 
-	git reset HEAD 
-    # 对单个文件进行撤销
-	git reset HEAD XXX/XXX/XXX.java 
     ```
 
 - 撤销commit的操作(已经commit)	
-	```
-    git rm .  (或者文件名)
-	git rm  XXX/XXX/XXX.java
     ```
+    git reset --soft HEAD^
+    git reset HEAD . (或者文件名)
+    # 查看状态
+    git status 
+    # 对上次的所有add的文件进行撤销 
+    git reset HEAD 
+    # 对单个文件进行撤销
+    git reset HEAD XXX/XXX/XXX.java 
+    ```
+    --mixed 意思是：不删除工作空间改动代码，撤销commit，并且撤销git add . 操作
+    这个为默认参数,git reset --mixed HEAD^ 和 git reset HEAD^ 效果是一样的。
+    
+    --soft 不删除工作空间改动代码，撤销commit，不撤销git add . 
+    
+    --hard 删除工作空间改动代码，撤销commit，撤销git add . 
+
 
 ##### 4.解除/关联 远程仓库
 ```
