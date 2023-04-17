@@ -146,8 +146,15 @@ docker container ls | grep wildfly | awk '{print $1}'
     docker exec -it redis-test /bin/bash
     redis-cli
     ```
+##### 17. push images to remote
+```
+docker tag selenium-chrome username/selenium-chrome:lts 
+docker login docker.io
+docker push username/selenium-chrome:lts
+```
 
-##### 17. 问题
+
+##### 18. 问题
 I.遇见这种错误时：`Error response from daemon: conflict: unable to delete 2da6c8b45647 (cannot be forced) - image has dependent child images`
 - 先查看依赖：`docker image inspect --format='{{.RepoTags}} {{.Id}} {{.Parent}}' $(docker image ls -q --filter since=XXX) `(XXX指镜像ID),然后删掉依赖后再删除即可
 - 可能是因为你创建的时候用了`cache`导致的，重新build的时候加上参数`--no-cache`(类似`docker build -t your docker name . --no-cache`)
