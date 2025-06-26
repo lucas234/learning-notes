@@ -1,0 +1,49 @@
+from browsermobproxy import Server
+import json
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+import time
+import os
+
+# 1. 下载browsermob-proxy-2.1.4 from https://github.com/lightbody/browsermob-proxy/releases
+# bmp_path = "/Users/bo.liu/Downloads/browsermob-proxy-2.1.4/bin/browsermob-proxy"
+bmp_path = "/Users/bo.liu/Work/place_order/data_preparation/browsermob-proxy-2.1.4/bin/browsermob-proxy"
+server = Server(bmp_path)
+server.start()
+proxy = server.create_proxy()
+time.sleep(5)
+
+print(f"--proxy-server={proxy.host}")
+# 2. 配置 Chrome WebDriver 使用代理
+chrome_options = Options()
+chrome_options.add_argument(f"--proxy-server={proxy.host}")
+# 可选：如果遇到SSL证书问题，可以添加以下参数（不推荐用于生产环境）
+chrome_options.add_argument('--ignore-certificate-errors')
+
+# 配置 ChromeDriver 服务
+# 请将此路径替换为你的 ChromeDriver 路径
+# chromedriver_path = "/Users/your_user/chromedriver" # 请根据你的实际路径修改
+service = Service('/Users/bo.liu/.wdm/drivers/chromedriver/mac64/137.0.7151.119/chromedriver-mac-x64/chromedriver')
+
+driver = webdriver.Chrome(service=service, options=chrome_options)
+
+try:
+    # 3. 告诉代理开始捕获流量
+    proxy.new_har("example.com", options={'captureHeaders': True, 'captureContent': True})
+    driver.get("https://www.google.com/search?q=google")
+    time.sleep(3)
+    # 4. 获取 HAR 数据
+    har_data = proxy.har
+    # 将 HAR 数据保存到文件
+    har_file_path = "example.har"
+    with open(har_file_path, "w", encoding="utf-8") as f:
+        json.dump(har_data, f, indent=4)
+    print(f"HAR 文件已保存到: {os.path.abspath(har_file_path)}")
+
+finally:
+    # 清理：关闭 WebDriver 和 Proxy 服务器
+    driver.quit()
+    time.sleep(10)
+    server.stop()
+    print("WebDriver 和 BrowserMob Proxy 已关闭。")
