@@ -6,6 +6,7 @@ from selenium.webdriver.chrome.options import Options
 import time
 import os
 
+
 # 1. 下载browsermob-proxy-2.1.4 from https://github.com/lightbody/browsermob-proxy/releases
 # bmp_path = "/Users/bo.liu/Downloads/browsermob-proxy-2.1.4/bin/browsermob-proxy"
 bmp_path = "/Users/bo.liu/Work/place_order/data_preparation/browsermob-proxy-2.1.4/bin/browsermob-proxy"
@@ -14,10 +15,10 @@ server.start()
 proxy = server.create_proxy()
 time.sleep(5)
 
-print(f"--proxy-server={proxy.host}")
 # 2. 配置 Chrome WebDriver 使用代理
 chrome_options = Options()
-chrome_options.add_argument(f"--proxy-server={proxy.host}")
+chrome_options.add_argument(f"--proxy-server={proxy.proxy}")
+print(f"--proxy-server={proxy.proxy}")
 # 可选：如果遇到SSL证书问题，可以添加以下参数（不推荐用于生产环境）
 chrome_options.add_argument('--ignore-certificate-errors')
 
@@ -30,8 +31,8 @@ driver = webdriver.Chrome(service=service, options=chrome_options)
 
 try:
     # 3. 告诉代理开始捕获流量
-    proxy.new_har("example.com", options={'captureHeaders': True, 'captureContent': True})
-    driver.get("https://www.google.com/search?q=google")
+    proxy.new_har("test", options={'captureHeaders': True, 'captureContent': True})
+    driver.get("https://www.iherb.com")
     time.sleep(3)
     # 4. 获取 HAR 数据
     har_data = proxy.har
